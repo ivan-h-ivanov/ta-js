@@ -1,0 +1,11 @@
+{
+  "name": "ta-js",
+  "version": "1.0.0",
+  "description": "Candlestick chart visualization using HTML5 Canvas and JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "generate-config": "node scripts/generateCandleChartConfig.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

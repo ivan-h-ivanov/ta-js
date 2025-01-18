@@ -1,4 +1,6 @@
-function drawCandleSeries(context, canvas, daysToShow, startIndex) {
+import { drawCartesianSystem } from './drawCartesianSystem.js';
+
+function drawCandleSeries(context, canvas, daysToShow, startIndex, candleChartConfig) {
   const { days } = candleChartConfig;
   const step = (canvas.width - 60) / daysToShow;
   const visibleDays = days.slice(startIndex, startIndex + daysToShow).reverse();
@@ -23,7 +25,7 @@ function drawCandleSeries(context, canvas, daysToShow, startIndex) {
   });
 }
 
-function drawCandleChart() {
+function drawCandleChart(candleChartConfig) {
   const canvas = document.getElementById('myCanvas');
   if (canvas.getContext) {
     const context = canvas.getContext('2d');
@@ -40,7 +42,7 @@ function drawCandleChart() {
       context.translate(-canvas.width / 2, -canvas.height / 2);
 
       drawCartesianSystem(context, canvas, daysToShow, startIndex);
-      drawCandleSeries(context, canvas, daysToShow, startIndex);
+      drawCandleSeries(context, canvas, daysToShow, startIndex, candleChartConfig);
 
       context.restore();
     };
@@ -89,3 +91,5 @@ window.onload = function() {
   drawBorder();
   drawCandleChart();
 };
+
+export { drawCandleSeries, drawCandleChart };

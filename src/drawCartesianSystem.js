@@ -68,3 +68,5 @@ function drawBorder() {
     console.error('Canvas not supported');
   }
 }
+
+export { drawCartesianSystem, drawBorder };

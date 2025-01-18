@@ -1,11 +1,17 @@
 <canvas id="myCanvas" width="1200" height="540" style="border:1px solid #000000;"></canvas>
 <div id="tooltip" style="position: absolute; display: none; background: #fff; border: 1px solid #000; padding: 5px;"></div>
-<script src="src/candleChartConfig.js"></script>
-<script src="src/drawCartesianSystem.js"></script>
-<script src="src/drawCandleSeries.js"></script>
-<script>
-  window.onload = function() {
-    drawBorder();
-    drawCandleChart();
+<script type="module">
+  import loadCandleChartConfig from './src/candleChartConfig.js';
+  import { drawCartesianSystem, drawBorder } from './src/drawCartesianSystem.js';
+  import { drawCandleSeries, drawCandleChart } from './src/drawCandleSeries.js';
+
+  window.onload = async function() {
+    try {
+      const candleChartConfig = await loadCandleChartConfig();
+      drawBorder();
+      drawCandleChart(candleChartConfig);
+    } catch (error) {
+      console.error('Failed to load candle chart config:', error);
+    }
   };
 </script>
